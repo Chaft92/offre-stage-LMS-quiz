@@ -8,7 +8,7 @@ COPY vite.config.js postcss.config.js tailwind.config.js ./
 RUN npm run build
 
 # Stage 2: PHP application
-FROM php:8.3-apache
+FROM php:8.4-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
