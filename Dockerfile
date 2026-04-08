@@ -22,11 +22,17 @@ WORKDIR /var/www/html
 # Copy application
 COPY . .
 
+# Create .env from example (needed for composer post-autoload scripts)
+RUN cp .env.example .env
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Install Node dependencies and build frontend
 RUN npm ci && npm run build && rm -rf node_modules
+
+# Ensure storage directories exist
+RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache
 
 # Configure Apache document root
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
@@ -43,9 +49,9 @@ RUN chown -R www-data:www-data storage bootstrap/cache
 RUN sed -i 's/80/10000/g' /etc/apache2/ports.conf /etc/apache2/sites-available/000-default.conf
 EXPOSE 10000
 
-# Entrypoint for migrations
+# Entrypoint for migrations (fix CRLF line endings from Windows)
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN sed -i 's/\r$//' /usr/local/bin/docker-entrypoint.sh && chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["apache2-foreground"]
