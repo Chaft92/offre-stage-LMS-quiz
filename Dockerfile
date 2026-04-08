@@ -1,10 +1,18 @@
+# Stage 1: Build frontend assets
+FROM node:20-slim AS node-builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY resources/ resources/
+COPY vite.config.js postcss.config.js tailwind.config.js ./
+RUN npm run build
+
+# Stage 2: PHP application
 FROM php:8.3-apache
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git curl libpng-dev libonig-dev libxml2-dev libpq-dev zip unzip \
-    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
@@ -28,8 +36,8 @@ RUN cp .env.example .env
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Install Node dependencies and build frontend
-RUN npm ci && npm run build && rm -rf node_modules
+# Copy built assets from Node stage
+COPY --from=node-builder /app/public/build public/build
 
 # Ensure storage directories exist
 RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache
