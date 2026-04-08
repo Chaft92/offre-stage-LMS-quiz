@@ -84,7 +84,7 @@ class QuizController extends Controller
             'texte' => 'required|string',
             'reponses' => 'required|array|min:2',
             'reponses.*.texte' => 'required|string',
-            'correcte' => 'required|integer|min:0',
+            'correcte' => 'required|integer|min:0|max:' . (count($request->input('reponses', [])) - 1),
         ]);
 
         $question = $quiz->questions()->create(['texte' => $validated['texte']]);

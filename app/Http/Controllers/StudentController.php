@@ -74,8 +74,8 @@ class StudentController extends Controller
         }
 
         $validated = $request->validate([
-            'answers' => 'required|array',
-            'answers.*' => 'required|integer',
+            'answers' => 'required|array|size:' . $quiz->questions->count(),
+            'answers.*' => 'required|integer|exists:reponses,id',
         ]);
 
         $score = 0;
@@ -98,18 +98,10 @@ class StudentController extends Controller
 
         $scoreSur20 = round(($score / $totalQuestions) * 20, 2);
 
-        // Delete previous attempt if exists
-        QuizResult::where('user_id', Auth::id())
-            ->where('quiz_id', $quiz->id)
-            ->delete();
-
-        $result = QuizResult::create([
-            'user_id' => Auth::id(),
-            'quiz_id' => $quiz->id,
-            'score' => $score,
-            'total_questions' => $totalQuestions,
-            'score_sur_20' => $scoreSur20,
-        ]);
+        $result = QuizResult::updateOrCreate(
+            ['user_id' => Auth::id(), 'quiz_id' => $quiz->id],
+            ['score' => $score, 'total_questions' => $totalQuestions, 'score_sur_20' => $scoreSur20]
+        );
 
         return redirect()->route('student.quiz.result', $quiz)
             ->with('result', $result);

@@ -134,7 +134,7 @@
                                     fd.append('texte', q.texte);
                                     q.reponses.forEach((r, i) => fd.append('reponses['+i+'][texte]', r.texte));
                                     fd.append('correcte', q.reponses.findIndex(r => r.est_correcte));
-                                    await fetch('/admin/quizzes/' + quizId + '/questions', { method: 'POST', body: fd });
+                                    await fetch(`{{ url('admin/quizzes') }}/` + quizId + '/questions', { method: 'POST', body: fd });
                                 }
 
                                 this.successMsg = 'Quiz cr\u00e9\u00e9 avec ' + aiData.data.questions.length + ' questions ! Redirection...';

@@ -56,7 +56,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::get('notes', [NoteController::class, 'index'])->name('notes.index');
 
-    Route::post('ai/generate', [AIController::class, 'generate'])->name('ai.generate');
+    Route::post('ai/generate', [AIController::class, 'generate'])->middleware('throttle:5,1')->name('ai.generate');
 });
 
 // Student routes
