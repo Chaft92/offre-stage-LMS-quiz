@@ -3,7 +3,7 @@
         <div class="flex justify-between items-center">
             <div>
                 <h2 class="font-bold text-xl text-gray-900">{{ $quiz->titre }}</h2>
-                <p class="text-sm text-gray-500">{{ $quiz->sousChapitre->chapitre->formation->nom ?? '' }} &middot; {{ $quiz->sousChapitre->titre ?? '' }}</p>
+                <p class="text-sm text-gray-500">{{ $quiz->sousChapitre->chapitre->formation->nom ?? '' }}  {{ $quiz->sousChapitre->titre ?? '' }}</p>
             </div>
             <a href="{{ route('admin.quizzes.index') }}" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-indigo-600 text-sm transition">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
@@ -104,11 +104,11 @@
                         @for($i = 0; $i < 4; $i++)
                             <div class="flex items-center gap-3">
                                 <input type="radio" name="correcte" value="{{ $i }}" {{ $i == 0 ? 'checked' : '' }} class="text-emerald-600 focus:ring-emerald-500">
-                                <input type="text" name="reponses[{{ $i }}][texte]" placeholder="R&eacute;ponse {{ $i + 1 }}" class="flex-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm text-sm" required>
+                                <input type="text" name="reponses[{{ $i }}][texte]" placeholder="Réponse {{ $i + 1 }}" class="flex-1 border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm text-sm" required>
                             </div>
                         @endfor
                     </div>
-                    <p class="text-xs text-gray-400 mb-4">S&eacute;lectionnez le bouton radio de la bonne r&eacute;ponse.</p>
+                    <p class="text-xs text-gray-400 mb-4">Sélectionnez le bouton radio de la bonne réponse.</p>
                     <div class="flex justify-end">
                         <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:shadow-lg transition-all font-medium text-sm">Ajouter la question</button>
                     </div>
@@ -122,15 +122,15 @@
                         <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-lg font-semibold text-gray-900">Aide IA - G&eacute;n&eacute;rer des questions</h3>
-                        <p class="text-sm text-gray-500">L'IA g&eacute;n&egrave;re des questions et r&eacute;ponses automatiquement.</p>
+                        <h3 class="text-lg font-semibold text-gray-900">Aide IA - Générer des questions</h3>
+                        <p class="text-sm text-gray-500">L'IA génère des questions et réponses automatiquement.</p>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
-                        <x-input-label value="Sujet / Th&egrave;me" />
-                        <x-text-input x-model="sujet" type="text" class="mt-1 block w-full" placeholder="Ex: Les verbes irr&eacute;guliers en anglais" />
+                        <x-input-label value="Sujet / Thème" />
+                        <x-text-input x-model="sujet" type="text" class="mt-1 block w-full" placeholder="Ex: Les verbes irréguliers en anglais" />
                     </div>
                     <div>
                         <x-input-label value="Nombre de questions" />
@@ -143,13 +143,13 @@
                     <template x-if="!loading">
                         <span class="flex items-center gap-2">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                            G&eacute;n&eacute;rer avec l'IA
+                            Générer avec l'IA
                         </span>
                     </template>
                     <template x-if="loading">
                         <span class="flex items-center gap-2">
                             <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
-                            G&eacute;n&eacute;ration en cours...
+                            Génération en cours...
                         </span>
                     </template>
                 </button>
@@ -157,7 +157,7 @@
                 <div x-show="error" x-transition class="mt-4 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl text-sm" x-text="error"></div>
 
                 <div x-show="questions.length > 0" class="mt-6 space-y-3">
-                    <h4 class="font-semibold text-gray-900">Questions g&eacute;n&eacute;r&eacute;es :</h4>
+                    <h4 class="font-semibold text-gray-900">Questions générées :</h4>
                     <template x-for="(q, qi) in questions" :key="qi">
                         <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
                             <p class="font-medium text-gray-900" x-text="(qi+1) + '. ' + q.texte"></p>
@@ -216,7 +216,7 @@
                                     this.error = data.message || 'Erreur lors de la g\u00e9n\u00e9ration.';
                                 }
                             } catch (e) {
-                                this.error = 'Erreur de connexion. V\u00e9rifiez votre cl\u00e9 API OpenRouter dans le .env.';
+                                this.error = 'Erreur de connexion. V\u00e9rifiez votre cl\u00e9 API Groq dans le .env.';
                             }
                             this.loading = false;
                         },

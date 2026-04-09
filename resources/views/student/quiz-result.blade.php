@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-xl text-gray-900">R&eacute;sultat : {{ $quiz->titre }}</h2>
+        <h2 class="font-bold text-xl text-gray-900">Résultat : {{ $quiz->titre }}</h2>
     </x-slot>
 
     <div class="py-8">
@@ -19,13 +19,13 @@
                 </div>
 
                 <p class="text-gray-500 mb-2">
-                    {{ $result->score }}/{{ $result->total_questions }} bonne(s) r&eacute;ponse(s)
+                    {{ $result->score }}/{{ $result->total_questions }} bonne(s) réponse(s)
                 </p>
 
                 @if($result->score_sur_20 >= 10)
                     <div class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 rounded-xl font-semibold">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        Bravo, vous avez r&eacute;ussi !
+                        Bravo, vous avez réussi !
                     </div>
                 @else
                     <div class="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 text-amber-700 rounded-xl font-semibold">

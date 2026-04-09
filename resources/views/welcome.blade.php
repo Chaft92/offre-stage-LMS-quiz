@@ -65,14 +65,14 @@
                 <div class="text-center animate-fade-in-up">
                     <div class="inline-flex items-center px-4 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-medium mb-8">
                         <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                        Plateforme p&eacute;dagogique propuls&eacute;e par l'IA
+                        Plateforme pédagogique propulsée par l'IA
                     </div>
                     <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
                         Apprenez, testez,
                         <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-600 bg-clip-text text-transparent">progressez</span>
                     </h1>
                     <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-                        Mini LMS p&eacute;dagogique pour cr&eacute;er des formations structur&eacute;es, g&eacute;rer des quiz interactifs et suivre la progression des apprenants en temps r&eacute;el.
+                        Mini LMS pédagogique pour créer des formations structurées, gérer des quiz interactifs et suivre la progression des apprenants en temps réel.
                     </p>
                     <div class="flex justify-center gap-4">
                         @if (Route::has('login'))
@@ -95,29 +95,29 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900 mb-3">Tout ce qu'il faut pour enseigner &amp; apprendre</h2>
-                <p class="text-gray-500 max-w-xl mx-auto">Une plateforme compl&egrave;te con&ccedil;ue pour les formateurs et les apprenants.</p>
+                <p class="text-gray-500 max-w-xl mx-auto">Une plateforme complète conçue pour les formateurs et les apprenants.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="hover-lift bg-white rounded-2xl p-8 shadow-sm border border-gray-100 group">
                     <div class="w-14 h-14 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Formations structur&eacute;es</h3>
-                    <p class="text-gray-500 leading-relaxed">Formations organis&eacute;es en chapitres et sous-chapitres avec contenu p&eacute;dagogique riche.</p>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Formations structurées</h3>
+                    <p class="text-gray-500 leading-relaxed">Formations organisées en chapitres et sous-chapitres avec contenu pédagogique riche.</p>
                 </div>
                 <div class="hover-lift bg-white rounded-2xl p-8 shadow-sm border border-gray-100 group">
                     <div class="w-14 h-14 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
                     </div>
                     <h3 class="text-lg font-semibold text-gray-900 mb-2">Quiz interactifs</h3>
-                    <p class="text-gray-500 leading-relaxed">QCM avec correction automatique et notation sur 20. R&eacute;sultats en temps r&eacute;el.</p>
+                    <p class="text-gray-500 leading-relaxed">QCM avec correction automatique et notation sur 20. Résultats en temps réel.</p>
                 </div>
                 <div class="hover-lift bg-white rounded-2xl p-8 shadow-sm border border-gray-100 group">
                     <div class="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Aide IA int&eacute;gr&eacute;e</h3>
-                    <p class="text-gray-500 leading-relaxed">G&eacute;n&eacute;ration de questions assist&eacute;e par intelligence artificielle pour acc&eacute;l&eacute;rer la cr&eacute;ation.</p>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Aide IA intégrée</h3>
+                    <p class="text-gray-500 leading-relaxed">Génération de questions assistée par intelligence artificielle pour accélérer la création.</p>
                 </div>
             </div>
         </div>
@@ -128,10 +128,10 @@
                 <div class="flex items-center justify-center gap-2 mb-6">
                     <span class="inline-flex items-center px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-medium">
                         <svg class="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
-                        Mode d&eacute;mo
+                        Mode démo
                     </span>
                 </div>
-                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Comptes de d&eacute;monstration</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Comptes de démonstration</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
                         <div class="flex items-center gap-3 mb-4">
@@ -150,7 +150,7 @@
                             <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-xl flex items-center justify-center">
                                 <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                             </div>
-                            <h3 class="font-bold text-emerald-900">&Eacute;tudiant</h3>
+                            <h3 class="font-bold text-emerald-900">étudiant</h3>
                         </div>
                         <div class="space-y-1.5">
                             <p class="text-sm text-emerald-700"><span class="font-semibold">Email :</span> alice@lms.fr</p>
@@ -164,7 +164,7 @@
 
     <footer class="bg-gray-50 border-t border-gray-200 py-8 text-center">
         <p class="text-sm font-semibold text-indigo-600 mb-1">LMS Quiz</p>
-        <p class="text-xs text-gray-400">Mini LMS P&eacute;dagogique &copy; {{ date('Y') }} &mdash; Fait par Julien YILDIZ.</p>
+        <p class="text-xs text-gray-400">Mini LMS Pédagogique  {{ date('Y') }}  Fait par Julien YILDIZ.</p>
     </footer>
 </body>
 </html>

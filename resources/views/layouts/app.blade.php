@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
     <head>
         <meta charset="utf-8">
@@ -32,7 +32,7 @@
 
             <footer class="mt-12 bg-gray-50 border-t border-gray-200 py-8 text-center">
                 <p class="text-sm font-semibold text-indigo-600 mb-1">LMS Quiz</p>
-                <p class="text-xs text-gray-400">Mini LMS Pédagogique &copy; {{ date('Y') }} &mdash; Fait par Julien YILDIZ.</p>
+                <p class="text-xs text-gray-400">Mini LMS Pédagogique  {{ date('Y') }}  Fait par Julien YILDIZ.</p>
             </footer>
         </div>
     </body>

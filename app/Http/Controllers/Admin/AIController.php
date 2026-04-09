@@ -8,6 +8,39 @@ use Illuminate\Support\Facades\Http;
 
 class AIController extends Controller
 {
+    /**
+     * Call the Groq API with a prompt.
+     */
+    private function callGroq(string $prompt, float $temperature = 0.7): ?string
+    {
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . config('services.groq.key', ''),
+            'Content-Type' => 'application/json',
+        ])->timeout(30)->post('https://api.groq.com/openai/v1/chat/completions', [
+            'model' => 'llama-3.3-70b-versatile',
+            'messages' => [
+                ['role' => 'user', 'content' => $prompt],
+            ],
+            'temperature' => $temperature,
+        ]);
+
+        if ($response->successful()) {
+            $content = $response->json('choices.0.message.content', '');
+
+            // Extract JSON from markdown code blocks if present
+            if (preg_match('/```(?:json)?\s*([\s\S]*?)```/', $content, $matches)) {
+                $content = trim($matches[1]);
+            }
+
+            return $content;
+        }
+
+        return null;
+    }
+
+    /**
+     * Generate quiz questions via AI.
+     */
     public function generate(Request $request)
     {
         $validated = $request->validate([
@@ -35,27 +68,9 @@ Réponds UNIQUEMENT avec un JSON valide sans texte supplémentaire, dans ce form
 }";
 
         try {
-            // Using OpenRouter free API with a free model
-            $response = Http::withHeaders([
-                'Authorization' => 'Bearer ' . config('services.openrouter.key', ''),
-                'Content-Type' => 'application/json',
-                'HTTP-Referer' => config('app.url'),
-            ])->timeout(30)->post('https://openrouter.ai/api/v1/chat/completions', [
-                'model' => 'mistralai/mistral-7b-instruct:free',
-                'messages' => [
-                    ['role' => 'user', 'content' => $prompt],
-                ],
-                'temperature' => 0.7,
-            ]);
+            $content = $this->callGroq($prompt);
 
-            if ($response->successful()) {
-                $content = $response->json('choices.0.message.content', '');
-
-                // Extract JSON from markdown code blocks if present
-                if (preg_match('/```(?:json)?\s*([\s\S]*?)```/', $content, $matches)) {
-                    $content = trim($matches[1]);
-                }
-
+            if ($content) {
                 $data = json_decode($content, true);
                 if ($data && isset($data['questions'])) {
                     return response()->json(['success' => true, 'data' => $data]);
@@ -70,6 +85,89 @@ Réponds UNIQUEMENT avec un JSON valide sans texte supplémentaire, dans ce form
             return response()->json([
                 'success' => false,
                 'message' => 'Erreur de connexion à l\'IA. Vérifiez la configuration API ou saisissez manuellement.',
+            ], 500);
+        }
+    }
+
+    /**
+     * Generate chapter title and description via AI.
+     */
+    public function generateChapitre(Request $request)
+    {
+        $validated = $request->validate([
+            'formation_nom' => 'required|string|max:500',
+            'sujet' => 'required|string|max:500',
+        ]);
+
+        $prompt = "Tu es un expert en pédagogie. Pour une formation intitulée \"{$validated['formation_nom']}\", génère un chapitre sur le thème : \"{$validated['sujet']}\".
+
+Réponds UNIQUEMENT avec un JSON valide sans texte supplémentaire, dans ce format exact :
+{
+  \"titre\": \"Titre du chapitre\",
+  \"description\": \"Description détaillée du chapitre en 2-3 phrases.\"
+}";
+
+        try {
+            $content = $this->callGroq($prompt);
+
+            if ($content) {
+                $data = json_decode($content, true);
+                if ($data && isset($data['titre'])) {
+                    return response()->json(['success' => true, 'data' => $data]);
+                }
+            }
+
+            return response()->json([
+                'success' => false,
+                'message' => 'L\'IA n\'a pas pu générer le chapitre. Veuillez réessayer ou saisir manuellement.',
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur de connexion à l\'IA. Vérifiez la configuration API.',
+            ], 500);
+        }
+    }
+
+    /**
+     * Generate course (sous-chapitre) content via AI.
+     */
+    public function generateCours(Request $request)
+    {
+        $validated = $request->validate([
+            'formation_nom' => 'required|string|max:500',
+            'chapitre_titre' => 'required|string|max:500',
+            'sujet' => 'required|string|max:500',
+        ]);
+
+        $prompt = "Tu es un expert en pédagogie. Pour la formation \"{$validated['formation_nom']}\", dans le chapitre \"{$validated['chapitre_titre']}\", génère un cours (sous-chapitre) sur le thème : \"{$validated['sujet']}\".
+
+Le contenu doit être pédagogique, structuré avec des titres HTML (h3, h4), des paragraphes, des listes à puces si nécessaire. Le contenu doit faire environ 300-500 mots.
+
+Réponds UNIQUEMENT avec un JSON valide sans texte supplémentaire, dans ce format exact :
+{
+  \"titre\": \"Titre du sous-chapitre\",
+  \"contenu\": \"<h3>Titre</h3><p>Contenu HTML structuré...</p>\"
+}";
+
+        try {
+            $content = $this->callGroq($prompt);
+
+            if ($content) {
+                $data = json_decode($content, true);
+                if ($data && isset($data['titre'])) {
+                    return response()->json(['success' => true, 'data' => $data]);
+                }
+            }
+
+            return response()->json([
+                'success' => false,
+                'message' => 'L\'IA n\'a pas pu générer le cours. Veuillez réessayer ou saisir manuellement.',
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur de connexion à l\'IA. Vérifiez la configuration API.',
             ], 500);
         }
     }

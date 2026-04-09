@@ -1,6 +1,7 @@
 # LMS Quiz - Mini LMS Pedagogique
 
-Plateforme d'apprentissage en ligne avec gestion de formations, quiz interactifs et notation automatique.
+Plateforme d'apprentissage en ligne avec gestion de formations, quiz interactifs et notation automatique : Projet test fait et rendu par moi-même, Julien YILDIZ, dans le cadre d'un entretien de Stage. Le tout a été fait par mes soins et uniquement dans le cadre de cet entretien. 
+L'application actuel est uniquement un schéma général et non un projet abouti, il peut être avancé et complété par si besoin.
 
 ## Fonctionnalites
 
@@ -18,11 +19,11 @@ Plateforme d'apprentissage en ligne avec gestion de formations, quiz interactifs
 
 ## Stack technique
 
-- **Backend** : Laravel 12 + PHP 8.x
+- **Backend** : Laravel 12 + PHP 8.5
 - **Frontend** : Blade + Tailwind CSS + Alpine.js
 - **Auth** : Laravel Breeze
 - **Base de donnees** : SQLite
-- **IA** : OpenRouter API (Mistral 7B gratuit)
+- **IA** : Groq API (LLaMA 3.3 70B, TOTALEMENT GRATUIT)
 
 ## Installation
 
@@ -55,7 +56,7 @@ npm run build
 php artisan serve
 ```
 
-## Comptes de demonstration
+## Les 3 Comptes de demonstration
 
 | Role | Email | Mot de passe |
 |------|-------|-------------|
@@ -63,15 +64,15 @@ php artisan serve
 | Etudiant | alice@lms.fr | password |
 | Etudiant | bob@lms.fr | password |
 
-## Configuration IA (optionnel)
+## Configuration IA (TOTALEMENT OPTIONNEL)
 
-Pour utiliser la generation de questions par IA, ajouter une cle API OpenRouter dans `.env` :
+Pour utiliser la generation de questions par IA, ajouter une cle API Groq dans `.env` :
 
 ```
-OPENROUTER_API_KEY=votre_cle_api
+GROQ_API_KEY = CLE_API
 ```
 
-Obtenir une cle gratuite sur [openrouter.ai](https://openrouter.ai/).
+Obtenir une cle gratuite sur [console.groq.com](https://console.groq.com/).
 
 ## Structure du projet
 

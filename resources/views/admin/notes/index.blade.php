@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-xl text-gray-900">Notes des &eacute;tudiants</h2>
+        <h2 class="font-bold text-xl text-gray-900">Notes des étudiants</h2>
     </x-slot>
 
     <div class="py-8">
@@ -8,9 +8,9 @@
             <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 mb-6">
                 <form method="GET" action="{{ route('admin.notes.index') }}" class="flex items-end gap-4">
                     <div class="flex-1">
-                        <x-input-label value="Filtrer par &eacute;tudiant" />
+                        <x-input-label value="Filtrer par étudiant" />
                         <select name="student_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm">
-                            <option value="">Tous les &eacute;tudiants</option>
+                            <option value="">Tous les étudiants</option>
                             @foreach($students as $student)
                                 <option value="{{ $student->id }}" {{ request('student_id') == $student->id ? 'selected' : '' }}>{{ $student->name }}</option>
                             @endforeach
@@ -25,7 +25,7 @@
                     <table class="min-w-full divide-y divide-gray-100">
                         <thead class="bg-gray-50/50">
                             <tr>
-                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">&Eacute;tudiant</th>
+                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">étudiant</th>
                                 <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Quiz</th>
                                 <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Formation</th>
                                 <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Score</th>
@@ -53,7 +53,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $result->created_at->format('d/m/Y H:i') }}</td>
                                 </tr>
                             @empty
-                                <tr><td colspan="6" class="px-6 py-12 text-gray-400 text-center">Aucun r&eacute;sultat.</td></tr>
+                                <tr><td colspan="6" class="px-6 py-12 text-gray-400 text-center">Aucun résultat.</td></tr>
                             @endforelse
                         </tbody>
                     </table>

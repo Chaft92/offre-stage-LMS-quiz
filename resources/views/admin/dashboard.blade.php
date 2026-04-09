@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="text-3xl font-bold text-gray-900">{{ $stats['results'] }}</div>
-                    <div class="text-sm text-gray-500 mt-1">R&eacute;sultats</div>
+                    <div class="text-sm text-gray-500 mt-1">Résultats</div>
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                 <a href="{{ route('admin.formations.create') }}" class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:border-indigo-200 hover:shadow-md transition-all block">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">Cr&eacute;er une formation</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors">Créer une formation</h3>
                             <p class="text-gray-500 mt-1 text-sm">Ajouter une nouvelle formation avec chapitres et contenus.</p>
                         </div>
                         <svg class="w-5 h-5 text-gray-300 group-hover:text-indigo-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
@@ -77,8 +77,8 @@
                 <a href="{{ route('admin.quizzes.create') }}" class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:border-emerald-200 hover:shadow-md transition-all block">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors">Cr&eacute;er un quiz</h3>
-                            <p class="text-gray-500 mt-1 text-sm">Cr&eacute;er un quiz et ajouter des questions/r&eacute;ponses.</p>
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-emerald-600 transition-colors">Créer un quiz</h3>
+                            <p class="text-gray-500 mt-1 text-sm">Créer un quiz et ajouter des questions/réponses.</p>
                         </div>
                         <svg class="w-5 h-5 text-gray-300 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </div>
@@ -87,7 +87,7 @@
                     <div class="flex items-center justify-between">
                         <div>
                             <h3 class="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">Voir les notes</h3>
-                            <p class="text-gray-500 mt-1 text-sm">Consulter les r&eacute;sultats des apprenants.</p>
+                            <p class="text-gray-500 mt-1 text-sm">Consulter les résultats des apprenants.</p>
                         </div>
                         <svg class="w-5 h-5 text-gray-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                     </div>
@@ -95,7 +95,7 @@
                 <a href="{{ route('admin.quizzes.index') }}" class="group bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:border-amber-200 hover:shadow-md transition-all block">
                     <div class="flex items-center justify-between">
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-amber-600 transition-colors">G&eacute;rer les quiz</h3>
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-amber-600 transition-colors">Gérer les quiz</h3>
                             <p class="text-gray-500 mt-1 text-sm">Modifier, publier ou supprimer des quiz existants.</p>
                         </div>
                         <svg class="w-5 h-5 text-gray-300 group-hover:text-amber-500 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>

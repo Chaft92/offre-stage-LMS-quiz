@@ -40,7 +40,7 @@
                 </div>
 
                 {{-- Footer --}}
-                <p class="mt-8 text-xs text-gray-400">&copy; {{ date('Y') }} LMS Quiz &mdash; Fait par Julien YILDIZ.</p>
+                <p class="mt-8 text-xs text-gray-400"> {{ date('Y') }} LMS Quiz  Fait par Julien YILDIZ.</p>
             </div>
         </div>
     </body>

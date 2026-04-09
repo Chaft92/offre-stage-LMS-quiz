@@ -14,12 +14,12 @@
                         <x-input-error :messages="$errors->get('titre')" class="mt-2" />
                     </div>
                     <div class="mb-6">
-                        <x-input-label for="contenu" value="Contenu p&eacute;dagogique (HTML autoris&eacute;)" />
+                        <x-input-label for="contenu" value="Contenu pédagogique (HTML autorisé)" />
                         <textarea id="contenu" name="contenu" rows="10" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm">{{ old('contenu', $sousChapitre->contenu) }}</textarea>
                     </div>
                     <div class="flex justify-end">
                         <a href="{{ route('admin.formations.show', $sousChapitre->chapitre->formation) }}" class="mr-3 text-gray-500 hover:text-gray-700 py-2 transition">Annuler</a>
-                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:shadow-lg transition-all font-medium text-sm">Mettre &agrave; jour</button>
+                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:shadow-lg transition-all font-medium text-sm">Mettre à jour</button>
                     </div>
                 </form>
             </div>

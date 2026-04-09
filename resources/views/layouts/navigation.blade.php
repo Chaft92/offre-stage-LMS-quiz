@@ -55,7 +55,7 @@
                         <x-dropdown-link :href="route('profile.edit')">Profil</x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">D&eacute;connexion</x-dropdown-link>
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">Déconnexion</x-dropdown-link>
                         </form>
                     </x-slot>
                 </x-dropdown>
@@ -94,7 +94,7 @@
                 <x-responsive-nav-link :href="route('profile.edit')">Profil</x-responsive-nav-link>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">D&eacute;connexion</x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">Déconnexion</x-responsive-nav-link>
                 </form>
             </div>
         </div>

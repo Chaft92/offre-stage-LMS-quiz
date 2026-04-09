@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-xl text-gray-900">Cr&eacute;er un quiz</h2>
+        <h2 class="font-bold text-xl text-gray-900">Créer un quiz</h2>
     </x-slot>
 
     <div class="py-8">
         <div class="max-w-3xl mx-auto sm:px-6 lg:px-8">
             <!-- Standard creation -->
             <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 mb-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Cr&eacute;ation manuelle</h3>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Création manuelle</h3>
                 <form action="{{ route('admin.quizzes.store') }}" method="POST">
                     @csrf
                     <div class="mb-4">
@@ -16,7 +16,7 @@
                         <x-input-error :messages="$errors->get('titre')" class="mt-2" />
                     </div>
                     <div class="mb-4">
-                        <x-input-label for="sous_chapitre_id" value="Li&eacute; au sous-chapitre" />
+                        <x-input-label for="sous_chapitre_id" value="Lié au sous-chapitre" />
                         <select id="sous_chapitre_id" name="sous_chapitre_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-xl shadow-sm" required>
                             <option value="">-- Choisir --</option>
                             @foreach($sousChapitres as $sc)
@@ -29,7 +29,7 @@
                     </div>
                     <div class="flex justify-end">
                         <a href="{{ route('admin.quizzes.index') }}" class="mr-3 text-gray-500 hover:text-gray-700 py-2 transition">Annuler</a>
-                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:shadow-lg transition-all font-medium text-sm">Cr&eacute;er le quiz</button>
+                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:shadow-lg transition-all font-medium text-sm">Créer le quiz</button>
                     </div>
                 </form>
             </div>
@@ -42,14 +42,14 @@
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold text-gray-900">Laisser l'IA faire</h3>
-                        <p class="text-sm text-gray-500">Donnez un sujet et l'IA g&eacute;n&egrave;re automatiquement le quiz complet.</p>
+                        <p class="text-sm text-gray-500">Donnez un sujet et l'IA génère automatiquement le quiz complet.</p>
                     </div>
                 </div>
 
                 <div class="space-y-4">
                     <div>
                         <x-input-label value="Sujet du quiz" />
-                        <x-text-input x-model="sujet" type="text" class="mt-1 block w-full" placeholder="Ex: Les verbes irr&eacute;guliers en anglais, la photosyn&egrave;se..." />
+                        <x-text-input x-model="sujet" type="text" class="mt-1 block w-full" placeholder="Ex: Les verbes irréguliers en anglais, la photosynèse..." />
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -79,7 +79,7 @@
                         <template x-if="loading">
                             <span class="flex items-center gap-2">
                                 <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
-                                G&eacute;n&eacute;ration en cours...
+                                Génération en cours...
                             </span>
                         </template>
                     </button>
@@ -140,7 +140,7 @@
                                 this.successMsg = 'Quiz cr\u00e9\u00e9 avec ' + aiData.data.questions.length + ' questions ! Redirection...';
                                 setTimeout(() => window.location.href = editUrl, 1500);
                             } catch (e) {
-                                this.error = 'Erreur de connexion. V\u00e9rifiez votre cl\u00e9 API OpenRouter.';
+                                this.error = 'Erreur de connexion. V\u00e9rifiez votre cl\u00e9 API Groq.';
                             }
                             this.loading = false;
                         }

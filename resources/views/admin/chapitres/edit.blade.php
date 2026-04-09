@@ -19,7 +19,7 @@
                     </div>
                     <div class="flex justify-end">
                         <a href="{{ route('admin.formations.show', $chapitre->formation) }}" class="mr-3 text-gray-500 hover:text-gray-700 py-2 transition">Annuler</a>
-                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:shadow-lg transition-all font-medium text-sm">Mettre &agrave; jour</button>
+                        <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 text-white rounded-xl hover:shadow-lg transition-all font-medium text-sm">Mettre à jour</button>
                     </div>
                 </form>
             </div>

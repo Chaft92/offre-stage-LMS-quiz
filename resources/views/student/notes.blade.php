@@ -7,7 +7,7 @@
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             @if($results->count())
                 <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-2xl p-6 mb-8 text-white shadow-lg shadow-indigo-200/50 text-center">
-                    <p class="text-white/80 text-sm mb-1">Moyenne g&eacute;n&eacute;rale</p>
+                    <p class="text-white/80 text-sm mb-1">Moyenne générale</p>
                     @php $moyenne = round($results->avg('score_sur_20'), 2); @endphp
                     <p class="text-5xl font-bold">{{ $moyenne }}<span class="text-2xl text-white/70">/20</span></p>
                 </div>

@@ -25,8 +25,8 @@
                             <span class="text-2xl font-bold text-white">{{ $existingResult->score_sur_20 }}</span>
                         </div>
                         <div>
-                            <h3 class="text-lg font-semibold text-gray-900">Vous avez d&eacute;j&agrave; pass&eacute; ce quiz</h3>
-                            <p class="text-gray-500 text-sm">Score : {{ $existingResult->score }}/{{ $existingResult->total_questions }} &middot; Vous pouvez repasser le quiz pour am&eacute;liorer votre note.</p>
+                            <h3 class="text-lg font-semibold text-gray-900">Vous avez déjà passé ce quiz</h3>
+                            <p class="text-gray-500 text-sm">Score : {{ $existingResult->score }}/{{ $existingResult->total_questions }}  Vous pouvez repasser le quiz pour améliorer votre note.</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
 
                 <div class="flex justify-center mt-8">
                     <button type="submit" class="px-10 py-3.5 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:shadow-lg hover:shadow-indigo-200 transition-all duration-300 font-semibold text-lg">
-                        Soumettre mes r&eacute;ponses
+                        Soumettre mes réponses
                     </button>
                 </div>
             </form>

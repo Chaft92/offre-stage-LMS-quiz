@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <div>
-                <h2 class="font-bold text-xl text-gray-900">R&eacute;sultats</h2>
+                <h2 class="font-bold text-xl text-gray-900">Résultats</h2>
                 <p class="text-sm text-gray-500">{{ $quiz->titre }}</p>
             </div>
             <a href="{{ route('admin.quizzes.index') }}" class="inline-flex items-center gap-1.5 text-gray-500 hover:text-indigo-600 text-sm transition">
@@ -19,7 +19,7 @@
                     <table class="min-w-full divide-y divide-gray-100">
                         <thead class="bg-gray-50/50">
                             <tr>
-                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">&Eacute;tudiant</th>
+                                <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">étudiant</th>
                                 <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Score brut</th>
                                 <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Note /20</th>
                                 <th class="px-6 py-3.5 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
@@ -43,7 +43,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $result->created_at->format('d/m/Y H:i') }}</td>
                                 </tr>
                             @empty
-                                <tr><td colspan="4" class="px-6 py-12 text-gray-400 text-center">Aucun r&eacute;sultat.</td></tr>
+                                <tr><td colspan="4" class="px-6 py-12 text-gray-400 text-center">Aucun résultat.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
