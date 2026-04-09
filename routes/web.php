@@ -35,6 +35,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     })->name('dashboard');
 
     Route::resource('formations', FormationController::class);
+    Route::post('formations/{formation}/enroll', [FormationController::class, 'enroll'])->name('formations.enroll');
+    Route::delete('formations/{formation}/unenroll/{user}', [FormationController::class, 'unenroll'])->name('formations.unenroll');
 
     Route::get('formations/{formation}/chapitres/create', [ChapitreController::class, 'create'])->name('chapitres.create');
     Route::post('formations/{formation}/chapitres', [ChapitreController::class, 'store'])->name('chapitres.store');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Formation;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FormationController extends Controller
@@ -37,7 +38,12 @@ class FormationController extends Controller
     public function show(Formation $formation)
     {
         $formation->load('chapitres.sousChapitres');
-        return view('admin.formations.show', compact('formation'));
+        $enrolledUsers = $formation->users()->orderBy('name')->get();
+        $availableStudents = User::where('role', 'apprenant')
+            ->whereNotIn('id', $enrolledUsers->pluck('id'))
+            ->orderBy('name')
+            ->get();
+        return view('admin.formations.show', compact('formation', 'enrolledUsers', 'availableStudents'));
     }
 
     public function edit(Formation $formation)
@@ -66,5 +72,26 @@ class FormationController extends Controller
 
         return redirect()->route('admin.formations.index')
             ->with('success', 'Formation supprimée.');
+    }
+
+    public function enroll(Request $request, Formation $formation)
+    {
+        $validated = $request->validate([
+            'user_ids' => 'required|array',
+            'user_ids.*' => 'exists:users,id',
+        ]);
+
+        $formation->users()->syncWithoutDetaching($validated['user_ids']);
+
+        return redirect()->route('admin.formations.show', $formation)
+            ->with('success', count($validated['user_ids']) . ' étudiant(s) inscrit(s) avec succès.');
+    }
+
+    public function unenroll(Formation $formation, User $user)
+    {
+        $formation->users()->detach($user->id);
+
+        return redirect()->route('admin.formations.show', $formation)
+            ->with('success', $user->name . ' a été désinscrit de la formation.');
     }
 }
