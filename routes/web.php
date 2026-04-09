@@ -61,6 +61,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('ai/generate', [AIController::class, 'generate'])->middleware('throttle:5,1')->name('ai.generate');
     Route::post('ai/generate-chapitre', [AIController::class, 'generateChapitre'])->middleware('throttle:5,1')->name('ai.generate-chapitre');
     Route::post('ai/generate-cours', [AIController::class, 'generateCours'])->middleware('throttle:5,1')->name('ai.generate-cours');
+    Route::post('ai/generate-formation', [AIController::class, 'generateFormation'])->middleware('throttle:3,1')->name('ai.generate-formation');
 });
 
 // Student routes
